@@ -88,7 +88,7 @@ Hint: put parenthesis around "n + 1" in your answer.
 -/
 
 def successor_of_even_is_odd : Prop := 
-  ∀ (n : ℕ) 
+  ∀ (n : ℕ), 
     ev n →
     odd (n + 1)
 
@@ -170,12 +170,11 @@ begin
   intros P Q R h,
   have p : P := and.elim_left h,
   have qr := and.elim_right h,
-  apply and_commutative,
   apply and.intro,
-  apply and.elim_right qr,
   apply and.intro,
   exact p,
-  apply and.elim_left qr,
+  exact and.elim_left qr,
+  exact and.elim_right qr,
 end
 
 /- #11
@@ -189,7 +188,7 @@ proof, let's call it p_qr, of (P ∧ (Q ∧ R)) [by
 application of ∧ and → introduction.] What now
 remains to be proved is ((P ∧ Q) ∧ R). We can
 construct a proof of this proposition by applying
-_the elimination rule of and_ to a proof of (P ∧ Q)
+_introduction rule of and_ to a proof of (P ∧ Q)
 and a proof of R. What remains, then, is to obtain
 these proofs. But this is easily done by the application of
 _the elimination rule of and_ to _P ∧ Q ∧ R_. QED. 
