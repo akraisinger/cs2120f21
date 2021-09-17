@@ -1,5 +1,5 @@
 /-
-We've seen that logics start with axioms that
+We've seen that logics start with i that
 can then be combined (with other information)
 using *inference rules* to derive theorems. In
 this file we review what we've covered so far
