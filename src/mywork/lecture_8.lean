@@ -1,4 +1,31 @@
 /-
+my cool solution
+theorem and_associative : ∀ (P Q R: Prop), (P ∧ Q) ∧ R → P ∧ (Q ∧ R) :=
+begin
+  assume P Q R,
+  assume h,
+  apply and.intro _ _,
+  have pq : P ∧ Q := and.elim_left h,
+  exact (and.elim_left pq),
+  apply and.intro _ _,
+  apply and.elim_right (and.elim_left h),
+  apply and.elim_right h,
+end
+-/
+
+-- the prof's example solution
+theorem and_associative : ∀ (P Q R: Prop), (P ∧ Q) ∧ R → P ∧ (Q ∧ R) :=
+begin
+  assume P Q R,
+  assume h,
+  have pq : P ∧ Q := and.elim_left h,
+  have p : P := and.elim_left pq,
+  have q : Q := and.elim_right pq,
+  have r : R := and.elim_right h,
+  exact and.intro p (and.intro q r),
+end
+
+/-
 The or connective, ∨, in predicate logic
 join any two propositions, P, Q, into a
 larger proposition, P ∨ Q. This proposition
@@ -15,7 +42,7 @@ of Q. Either will do. We thus have two intro
 rules for ∨. They are called the left and
 right introduction rules. 
 
-The left one takes a proof, let's say, p, of 
+The left one takes- a proof, let's say, p, of 
 the left proposition, P (from which it infers) 
 P along with the right proposition, Q, and then 
 returns a proof of P ∨ Q. The arguments are 
@@ -59,7 +86,7 @@ Let's formalize our example in Lean.
 -/
 
 axioms (Joe_is_tall Joe_chews_gum : Prop)
-axiom jcg: Joe_chews_gum
+axiom jcg: Joe_chews_gum -- proof of joe chews gum
 
 theorem jcg_or_jit: Joe_chews_gum ∨ Joe_is_tall :=
   or.intro_left Joe_is_tall jcg 
