@@ -80,4 +80,17 @@ if have proof of p and proof of q then can proof of p ∧ q
 two smaller proofs into one bigger proof
 
 
+/-
+
+given proposition of P, can also make proposition ¬P
+
+way to prove ¬P is to show P has no proof.
+if ¬P is true, then assuming P is true will able to deduce proof of false.
+say ¬P by saying P is true is impossible, and because impossible, no proof of P.
+
+if P→false is true, then there is not proof of P, so ¬P.
+(remember, no proofs of false)
+
+
+
 -/

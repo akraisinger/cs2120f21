@@ -87,11 +87,28 @@ begin
   apply iff.intro _ _,
   -- forward
     assume h,
-    have p : P := and.elim_left h,
+    have p := and.elim_left h,
     have qr := and.elim_right h,
-
+    cases qr,
+    apply or.intro_left,
+    exact and.intro p qr,
+    apply or.intro_right,
+    exact and.intro p qr,
   -- backward
-
+    assume h,
+    apply and.intro,
+    cases h,
+    have p := and.elim_left h,
+    exact p,
+    have p := and.elim_left h,
+    exact p,
+    cases h,
+    apply or.intro_left,
+    have q := and.elim_right h,
+    exact q,
+    apply or.intro_right,
+    have r := and.elim_right h,
+    exact r,
 end
 
 example : ∀ (P Q R : Prop), P ∨ (Q ∧ R) ↔ (P ∨ Q) ∧ (P ∨ R) := 
