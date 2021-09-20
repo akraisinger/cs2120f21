@@ -51,17 +51,47 @@ begin
   apply iff.intro _ _,
   -- forward
     assume porq,
+    apply or.elim porq,
+    assume P,
     apply or.intro_right,
-    
+    exact P,
+    assume Q,
+    apply or.intro_left,
+    exact Q,
   -- backward
+    assume qorp,
+    apply or.elim qorp,
+    assume Q,
+    apply or.intro_right,
+    exact Q,
+    assume P,
+    apply or.intro_left,
+    exact P,
 end
 
 example : ∀ (P Q : Prop), P ∧ Q ↔ Q ∧ P := 
 begin
+  assume P Q,
+  apply iff.intro _ _,
+  -- forward
+    assume pandq,
+    exact and.intro(and.elim_right pandq)(and.elim_left pandq),
+  -- backward
+    assume qandp,
+    exact and.intro(and.elim_right qandp)(and.elim_left qandp),
 end
 
 example : ∀ (P Q R : Prop), P ∧ (Q ∨ R) ↔ (P ∧ Q) ∨ (P ∧ R) := 
 begin
+  assume P Q R,
+  apply iff.intro _ _,
+  -- forward
+    assume h,
+    have p : P := and.elim_left h,
+    have qr := and.elim_right h,
+
+  -- backward
+
 end
 
 example : ∀ (P Q R : Prop), P ∨ (Q ∧ R) ↔ (P ∨ Q) ∧ (P ∨ R) := 
