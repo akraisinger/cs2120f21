@@ -113,6 +113,11 @@ end
 
 example : ∀ (P Q R : Prop), P ∨ (Q ∧ R) ↔ (P ∨ Q) ∧ (P ∨ R) := 
 begin
+  assume P Q R,
+  apply iff.intro,
+  assume h,
+  apply and.intro,
+  have h1 := or.intro_left,
 end
 
 example : ∀ (P Q : Prop), P ∧ (P ∨ Q) ↔ P := 
