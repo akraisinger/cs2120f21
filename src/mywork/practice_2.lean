@@ -1,3 +1,5 @@
+-- Anna Kraisinger alk6tx
+
 -- due wednesday
 /-
 Prove the following simple logical conjectures.
