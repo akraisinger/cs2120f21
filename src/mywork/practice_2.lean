@@ -91,28 +91,28 @@ begin
   assume P Q R,
   apply iff.intro _ _,
   -- forward
-    assume h,
-    have p := and.elim_left h,
-    have qr := and.elim_right h,
+    assume e,
+    have p := and.elim_left e,
+    have qr := and.elim_right e,
     cases qr,
     apply or.intro_left,
     exact and.intro p qr,
     apply or.intro_right,
     exact and.intro p qr,
   -- backward
-    assume h,
+    assume e,
     apply and.intro,
-    cases h,
-    have p := and.elim_left h,
+    cases e,
+    have p := and.elim_left e,
     exact p,
-    have p := and.elim_left h,
+    have p := and.elim_left e,
     exact p,
-    cases h,
+    cases e,
     apply or.intro_left,
-    have q := and.elim_right h,
+    have q := and.elim_right e,
     exact q,
     apply or.intro_right,
-    have r := and.elim_right h,
+    have r := and.elim_right e,
     exact r,
 end
 
@@ -122,25 +122,25 @@ begin
   assume P Q R,
   apply iff.intro,
   -- forward
-    assume h,
+    assume e,
     apply and.intro,
-    cases h,
+    cases e,
     apply or.intro_left,
-    exact h,
+    exact e,
     apply or.intro_right,
-    exact (and.elim_left h),
-    cases h,
+    exact (and.elim_left e),
+    cases e,
     apply or.intro_left,
-    exact h,
+    exact e,
     apply or.intro_right,
-    exact (and.elim_right h),
+    exact (and.elim_right e),
   -- backward
-    assume h,
-    have pq := and.elim_left h,
+    assume e,
+    have pq := and.elim_left e,
     cases pq,
     apply or.intro_left,
     exact pq,
-    have pr := and.elim_right h,
+    have pr := and.elim_right e,
     cases pr,
     apply or.intro_left,
     exact pr,
@@ -154,15 +154,15 @@ begin
   assume P Q,
   apply iff.intro,
   -- forward
-    assume h,
-    have p := and.elim_left h,
+    assume e,
+    have p := and.elim_left e,
     exact p,
   -- backward
-    assume h,
+    assume e,
     apply and.intro,
-    exact h,
+    exact e,
     apply or.intro_left,
-    exact h,
+    exact e,
 end
 
 -- 8
@@ -171,15 +171,15 @@ begin
   assume P Q,
   apply iff.intro,
   -- forward
-    assume h,
-    cases h,
-    exact h,
-    have p := and.elim_left h,
+    assume e,
+    cases e,
+    exact e,
+    have p := and.elim_left e,
     exact p,
   -- backward
-    assume h,
+    assume e,
     apply or.intro_left,
-    exact h,
+    exact e,
 end
 
 -- 9
@@ -188,14 +188,14 @@ begin
   assume P,
   apply iff.intro,
   -- forward
-    assume h,
-    cases h,
+    assume e,
+    cases e,
     apply true.intro,
-    exact h,
+    exact e,
   -- backward
-    assume h,
+    assume e,
     apply or.intro_right,
-    exact h,
+    exact e,
 end
 
 -- 10
@@ -204,15 +204,15 @@ begin
   assume P,
   apply iff.intro,
   -- forward
-    assume h,
-    cases h,
-    exact h,
+    assume e,
+    cases e,
+    exact e,
     apply false.elim,
-    exact h,
+    exact e,
   -- backward
-    assume h,
+    assume e,
     apply or.intro_left,
-    exact h,
+    exact e,
 end
 
 -- 11
@@ -221,12 +221,12 @@ begin
   assume P,
   apply iff.intro,
   -- forward
-    assume h,
-    apply and.elim_left h,
+    assume e,
+    apply and.elim_left e,
   -- backward
-    assume h,
+    assume e,
     apply and.intro,
-    exact h,
+    exact e,
     apply true.intro,
 end
 
@@ -236,13 +236,13 @@ begin
   assume P,
   apply iff.intro,
   -- forward
-    assume h,
-    apply and.elim_right h,
+    assume e,
+    apply and.elim_right e,
   -- backward
-    assume h,
+    assume e,
     apply and.intro,
     apply false.elim,
-    exact h,
-    exact h,
+    exact e,
+    exact e,
 end
 
