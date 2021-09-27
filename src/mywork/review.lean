@@ -78,7 +78,7 @@ AND & →
 P ∧ Q 
 if have proof of p and proof of q then can proof of p ∧ q
 two smaller proofs into one bigger proof
-
+-/
 
 /-
 
@@ -91,6 +91,47 @@ say ¬P by saying P is true is impossible, and because impossible, no proof of P
 if P→false is true, then there is not proof of P, so ¬P.
 (remember, no proofs of false)
 
+-/
 
+/-
+-- INTRO AND ELIM RULES!! --
+
+EQUALS (=)
+intro: (1 rule)
+elim: (1 rule)
+
+AND (∧)
+intro: (and.intro)
+elim: (and.elim_left, and.elim_right)
+
+OR (∨)
+intro: (or.intro_left, or.intro_right)
+elim: (or.elim)
+
+FOR ALL (∀)
+intro: if you can assume an arbitrary version and prove it,
+then you can for all
+elim: apply the for all func
+
+IMPLIES (→)
+intro: assume the antecedent, if you can prove the consequent,
+then you can prove implies.
+elim: apply the implies func
+
+NOT (¬)
+intro (none??)
+elim??
+
+IF AND ONLY IFF (↔)
+intro: (iff.intro)
+elim?
+
+TRUE
+intro: (true.intro)
+elim: no real elimination rule for true
+
+FALSE
+intro: no real intro rule for false
+elim: (false.elim) 
 
 -/
