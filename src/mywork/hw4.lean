@@ -63,26 +63,67 @@ theorem demorgan_1 : ∀ (P Q : Prop), ¬ (P ∧ Q) ↔ ¬ P ∨ ¬ Q :=
 begin
   assume P Q,
   apply iff.intro,
+  -- forward
   assume h,
-  have pornp := classical.em P,
-  have qornq := classical.em Q,
-  cases pornp,
-  apply or.intro_left,
+  have por := classical.em P,
+  have qor := classical.em Q,
+  have pqf : (P ∧ Q) → false,
+  assume e,
+  have eh := h e,
+  exact eh,
+  apply or.elim por,
   assume p,
-  cases qornq,
-
-  
-  
-  
-
-  
-
+  apply or.elim qor,
+  assume q,
+  have pq : (P∧Q),
+  exact and.intro p q,
+  contradiction,
+  assume e,
+  apply or.intro_right,
+  exact e,
+  assume e,
+  apply or.intro_left,
+  exact e,
+  -- backward
+  assume h,
+  assume pq,
+  cases h,
+  have p := and.elim_left pq,
+  contradiction,
+  have q := and.elim_right pq,
+  contradiction,
 end
 
 
 -- 6
 theorem demorgan_2 : ∀ (P Q : Prop), ¬ (P ∨ Q) → ¬P ∧ ¬Q :=
 begin
+  assume P Q h,
+  have por := classical.em P,
+  have qor := classical.em Q,
+  have pqf : (P ∨ Q) → false,
+  assume e,
+  have eh := h e,
+  exact eh,
+  apply or.elim por,
+  assume e, 
+  have eor : P ∨ Q,
+  apply or.intro_left,
+  exact e,
+  have f := pqf eor,
+  apply false.elim f,
+  apply or.elim qor,
+  assume e,
+  have eor : P ∨ Q,
+  apply or.intro_right,
+  exact e,
+  have f := pqf eor,
+  apply false.elim f,
+  assume nq,
+  assume np,
+  have npnq : ¬P ∧ ¬Q,
+  exact and.intro np nq,
+  exact npnq,
 end
 
 
